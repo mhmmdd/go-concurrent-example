@@ -4,11 +4,15 @@
 1. Challenges with Concurrency
     1. Coordinating tasks 
        * WaitGroups
+       * Channels 
     2. Shared memory
        * Mutexes
+       * Channels 
     
 2. Mutex
     * A mutual exclusion lock
-    
-Showing the date races\
-`go run --race .`
+    Showing the date races\
+    `go run --race .`
+      
+3. Channels
+![](img/channel.png)
