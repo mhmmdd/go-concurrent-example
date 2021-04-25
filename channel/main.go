@@ -15,9 +15,8 @@ func main() {
 	// receive-only channel <-chan
 	go func(ch <-chan int, wg *sync.WaitGroup) {
 		// receive a message from channel
-		// if the channel is open then ok is to be true
-		if msg, ok := <-ch; ok {
-			fmt.Println(msg, ok)
+		for msg := range ch {
+			fmt.Println(msg)
 		}
 		wg.Done()
 	}(ch, wg)
@@ -25,6 +24,9 @@ func main() {
 	// send-only channel ->chan
 	go func(ch chan<- int, wg *sync.WaitGroup) {
 		// send a message to channel
+		for i := 0; i < 10; i++ {
+			ch <- i
+		}
 		close(ch)
 		wg.Done()
 	}(ch, wg)
